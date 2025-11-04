@@ -1,0 +1,12 @@
+node_modules/
+build/
+dist/
+*.log
+.env
+.DS_Store
+*.js
+*.js.map
+*.d.ts
+!build/
+.vscode/
+.idea/
