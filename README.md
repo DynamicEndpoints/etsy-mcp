@@ -1,5 +1,7 @@
 # Etsy MCP Server
 
+[![smithery badge](https://smithery.ai/badge/@DynamicEndpoints/etsy-mcp)](https://smithery.ai/server/@DynamicEndpoints/etsy-mcp)
+
 A Model Context Protocol (MCP) server that provides seamless integration with the Etsy API v3. This server enables AI assistants and applications to interact with Etsy's marketplace, search listings, retrieve shop information, and access product details.
 
 **🚀 Deploy to Smithery**: This server is ready for deployment to [Smithery](https://smithery.ai) for hosted, always-available access. See [SMITHERY_DEPLOYMENT.md](./SMITHERY_DEPLOYMENT.md) for instructions.
@@ -454,8 +456,8 @@ MIT
 
 ## Resources
 
-- � [Smithery Deployment Guide](./SMITHERY_DEPLOYMENT.md) - Deploy to hosted infrastructure
-- �📖 [OAuth Setup Guide](./OAUTH_SETUP.md) - Complete OAuth 2.0 setup instructions
+- 🚀 [Smithery Deployment Guide](./SMITHERY_DEPLOYMENT.md) - Deploy to hosted infrastructure
+- 📖 [OAuth Setup Guide](./OAUTH_SETUP.md) - Complete OAuth 2.0 setup instructions
 - 📋 [Quick Reference](./QUICK_REFERENCE.md) - Tool categories and common examples
 - [Etsy API Documentation](https://developers.etsy.com/documentation)
 - [Model Context Protocol](https://modelcontextprotocol.io)
