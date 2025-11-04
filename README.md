@@ -14,7 +14,9 @@ A Model Context Protocol (MCP) server that provides seamless integration with th
 - 🎨 **Manage Shop Sections**: Organize your shop with categories
 - 🛠️ **Full Shop Management**: Update shop info, inventory, images, and more
 - 🔐 **OAuth Support**: Secure authenticated access for write operations
-- 🔧 **Built with Latest MCP Standards**: Uses @modelcontextprotocol/sdk v1.0.4
+- � **Smart Prompts**: Pre-built prompts for listing creation, SEO optimization, pricing, and analytics
+- 📚 **Comprehensive Resources**: Built-in guides for SEO, photography, shipping, and seller best practices
+- �🔧 **Built with Latest MCP Standards**: Uses @modelcontextprotocol/sdk v1.0.4
 
 ## Installation
 
@@ -381,7 +383,181 @@ Update shop information and settings.
   "sale_message": "Thank you for your purchase!"
 }
 ```
-- `offset`: Results to skip
+
+---
+
+## Prompts
+
+The server provides comprehensive prompt templates to help you with common Etsy seller tasks:
+
+### 1. create-listing-guide
+Complete guide for creating an optimized Etsy listing with best practices.
+
+**Arguments:**
+- `product_type` (required): Type of product (e.g., handmade, vintage, craft supply)
+
+**Provides guidance on:**
+- Title creation (140 char max, SEO-optimized)
+- Description structure and formatting
+- Tags strategy (13 tags with keyword research)
+- Pricing calculations (materials, labor, fees)
+- Photography checklist
+
+### 2. optimize-listing
+Generate SEO-optimized title, tags, and description for existing listings.
+
+**Arguments:**
+- `listing_id` (required): The listing to optimize
+- `focus_keywords` (optional): Keywords to prioritize
+
+**Generates:**
+- SEO-optimized title variations
+- Enhanced description with keyword integration
+- 13 strategic tags based on search trends
+- Competitive analysis framework
+- Action items for improvement
+
+### 3. shop-analytics-review
+Create comprehensive shop performance analysis template.
+
+**Arguments:**
+- `shop_id` (required): Shop to analyze
+- `time_period` (optional): Analysis timeframe (e.g., last_month, last_quarter)
+
+**Analyzes:**
+- Traffic metrics and conversion rates
+- Sales performance and trends
+- SEO effectiveness
+- Customer insights and behavior
+- Actionable recommendations
+
+### 4. product-photography-tips
+Tailored product photography guidance for Etsy.
+
+**Arguments:**
+- `product_category` (required): Category (jewelry, home decor, clothing, etc.)
+
+**Covers:**
+- Equipment recommendations
+- Shot list specific to category
+- Lighting setup (natural and artificial)
+- Styling and composition tips
+- Post-processing techniques
+- Etsy-specific best practices
+
+### 5. pricing-strategy
+Calculate competitive pricing with full cost analysis.
+
+**Arguments:**
+- `material_cost` (required): Total material costs
+- `time_hours` (required): Hours to create
+- `desired_hourly_rate` (optional): Preferred hourly rate (default: $25)
+
+**Calculates:**
+- Complete cost breakdown (materials, labor, overhead)
+- Etsy fees (transaction, processing, listing)
+- Break-even price
+- Suggested retail price with profit margin
+- Premium positioning options
+- Profitability analysis
+
+**Example Usage:**
+```
+Use prompt "pricing-strategy" with:
+- material_cost: 15.50
+- time_hours: 3
+- desired_hourly_rate: 30
+```
+
+---
+
+## Resources
+
+The server provides comprehensive documentation and guides as resources:
+
+### 1. etsy-api-docs
+**URI:** `etsy://docs/api`
+
+Complete Etsy Open API v3 reference documentation including:
+- Authentication methods (API key, OAuth 2.0)
+- Rate limits and best practices
+- All endpoint documentation
+- Request/response formats
+- Error codes and handling
+
+### 2. etsy-seller-handbook
+**URI:** `etsy://docs/seller-handbook`
+
+Comprehensive seller guide covering:
+- Shop setup and configuration
+- Listing optimization strategies
+- Product photography best practices
+- SEO strategies for Etsy search
+- Customer service excellence
+- Marketing and growth tactics
+- Seasonal planning guide
+
+### 3. etsy-seo-guide
+**URI:** `etsy://docs/seo-guide`
+
+Complete SEO optimization guide:
+- Understanding Etsy search algorithm
+- Keyword research methods and tools
+- Title optimization formulas
+- Tag strategy (maximizing all 13 tags)
+- Description SEO techniques
+- Category and attribute selection
+- Performance tracking and analytics
+- A/B testing strategies
+- Common SEO mistakes to avoid
+- Quick wins checklist
+
+### 4. etsy-shipping-guide
+**URI:** `etsy://docs/shipping`
+
+Everything about shipping on Etsy:
+- Setting up shipping profiles
+- Domestic and international shipping
+- Free shipping strategies
+- Carrier comparisons (USPS, UPS, FedEx)
+- Packaging best practices and branding
+- Tracking and insurance
+- Handling shipping issues
+- International customs requirements
+- Seasonal shipping preparation
+
+### 5. etsy-photography-tips
+**URI:** `etsy://docs/photography`
+
+Professional product photography guide:
+- Equipment essentials (cameras, lighting, support)
+- Technical requirements for Etsy
+- Essential shot list (hero, detail, lifestyle, scale)
+- Lighting techniques (natural and artificial)
+- Styling and composition rules
+- Camera settings (smartphone and DSLR)
+- Post-processing workflow
+- Category-specific tips (jewelry, clothing, home decor, art)
+- Mobile photography best practices
+- Video content tips
+
+### 6. etsy-fees-calculator
+**URI:** `etsy://tools/fees-calculator`
+
+Interactive fees calculator with:
+- All Etsy fee structures (listing, transaction, processing, offsite ads)
+- Example calculations
+- Pricing formulas for profitable pricing
+- Tips for managing fee costs
+- JSON format for programmatic access
+
+**Example Usage:**
+```
+Read resource "etsy://docs/seo-guide" for complete SEO strategies
+Read resource "etsy://tools/fees-calculator" for pricing calculations
+```
+
+---
 
 ## Development
 
@@ -475,6 +651,10 @@ Ensure your internet connection is working and you can reach `openapi.etsy.com`.
 
 ## Version History
 
+- **1.1.0**: Added prompts and resources
+  - 5 comprehensive prompts for seller guidance
+  - 6 resource guides (SEO, photography, shipping, fees calculator)
+  - Enhanced AI assistant capabilities
 - **1.0.0**: Initial release with 19 Etsy API tools
   - 10 read-only tools for searching and viewing
   - 9 shop management tools for creating and updating
