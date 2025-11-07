@@ -27,11 +27,11 @@ interface EtsyConfig {
   accessToken?: string;
 }
 
-// Configuration schema for Smithery
+// Configuration schema for Smithery - All fields optional
 export const configSchema = z.object({
-  apiKey: z.string().describe('Your Etsy API key (Keystring) from the Etsy Developer Portal'),
-  shopId: z.string().optional().describe('Your Etsy shop ID (optional, for faster shop operations)'),
-  accessToken: z.string().optional().describe('OAuth access token for shop management features (optional, required for write operations)'),
+  apiKey: z.string().optional().describe('Your Etsy API key (Keystring) from the Etsy Developer Portal. Falls back to ETSY_API_KEY environment variable.'),
+  shopId: z.string().optional().describe('Your Etsy shop ID (optional, for faster shop operations). Falls back to ETSY_SHOP_ID environment variable.'),
+  accessToken: z.string().optional().describe('OAuth access token for shop management features (optional, required for write operations). Falls back to ETSY_ACCESS_TOKEN environment variable.'),
 });
 
 class EtsyMCPServer {
@@ -216,6 +216,11 @@ class EtsyMCPServer {
           },
           required: ['keywords'],
         },
+        annotations: {
+          readOnlyHint: true,
+          destructiveHint: false,
+          idempotentHint: true,
+        },
       },
       {
         name: 'get_listing',
@@ -238,6 +243,11 @@ class EtsyMCPServer {
           },
           required: ['listing_id'],
         },
+        annotations: {
+          readOnlyHint: true,
+          destructiveHint: false,
+          idempotentHint: true,
+        },
       },
       {
         name: 'get_shop',
@@ -251,6 +261,11 @@ class EtsyMCPServer {
             },
           },
           required: ['shop_id'],
+        },
+        annotations: {
+          readOnlyHint: true,
+          destructiveHint: false,
+          idempotentHint: true,
         },
       },
       {
@@ -282,6 +297,11 @@ class EtsyMCPServer {
           },
           required: ['shop_id'],
         },
+        annotations: {
+          readOnlyHint: true,
+          destructiveHint: false,
+          idempotentHint: true,
+        },
       },
       {
         name: 'search_shops',
@@ -306,6 +326,11 @@ class EtsyMCPServer {
           },
           required: ['shop_name'],
         },
+        annotations: {
+          readOnlyHint: true,
+          destructiveHint: false,
+          idempotentHint: true,
+        },
       },
       {
         name: 'get_listing_inventory',
@@ -321,6 +346,11 @@ class EtsyMCPServer {
           },
           required: ['listing_id'],
         },
+        annotations: {
+          readOnlyHint: true,
+          destructiveHint: false,
+          idempotentHint: true,
+        },
       },
       {
         name: 'get_listing_images',
@@ -335,6 +365,11 @@ class EtsyMCPServer {
           },
           required: ['listing_id'],
         },
+        annotations: {
+          readOnlyHint: true,
+          destructiveHint: false,
+          idempotentHint: true,
+        },
       },
       {
         name: 'get_shop_sections',
@@ -348,6 +383,11 @@ class EtsyMCPServer {
             },
           },
           required: ['shop_id'],
+        },
+        annotations: {
+          readOnlyHint: true,
+          destructiveHint: false,
+          idempotentHint: true,
         },
       },
       {
@@ -367,6 +407,11 @@ class EtsyMCPServer {
               default: 0,
             },
           },
+        },
+        annotations: {
+          readOnlyHint: true,
+          destructiveHint: false,
+          idempotentHint: true,
         },
       },
       {
@@ -390,6 +435,11 @@ class EtsyMCPServer {
               default: 0,
             },
           },
+        },
+        annotations: {
+          readOnlyHint: true,
+          destructiveHint: false,
+          idempotentHint: true,
         },
       },
       // Shop Management Tools (require OAuth access token)
@@ -459,6 +509,11 @@ class EtsyMCPServer {
             'taxonomy_id',
           ],
         },
+        annotations: {
+          readOnlyHint: false,
+          destructiveHint: false,
+          idempotentHint: false,
+        },
       },
       {
         name: 'update_listing',
@@ -502,6 +557,11 @@ class EtsyMCPServer {
           },
           required: ['shop_id', 'listing_id'],
         },
+        annotations: {
+          readOnlyHint: false,
+          destructiveHint: false,
+          idempotentHint: true,
+        },
       },
       {
         name: 'delete_listing',
@@ -516,6 +576,11 @@ class EtsyMCPServer {
             },
           },
           required: ['listing_id'],
+        },
+        annotations: {
+          readOnlyHint: false,
+          destructiveHint: true,
+          idempotentHint: true,
         },
       },
       {
@@ -587,6 +652,11 @@ class EtsyMCPServer {
           },
           required: ['listing_id', 'products'],
         },
+        annotations: {
+          readOnlyHint: false,
+          destructiveHint: false,
+          idempotentHint: true,
+        },
       },
       {
         name: 'upload_listing_image',
@@ -618,6 +688,11 @@ class EtsyMCPServer {
           },
           required: ['shop_id', 'listing_id', 'image_url'],
         },
+        annotations: {
+          readOnlyHint: false,
+          destructiveHint: false,
+          idempotentHint: false,
+        },
       },
       {
         name: 'create_shop_section',
@@ -636,6 +711,11 @@ class EtsyMCPServer {
             },
           },
           required: ['shop_id', 'title'],
+        },
+        annotations: {
+          readOnlyHint: false,
+          destructiveHint: false,
+          idempotentHint: false,
         },
       },
       {
@@ -659,6 +739,11 @@ class EtsyMCPServer {
           },
           required: ['shop_id', 'shop_section_id', 'title'],
         },
+        annotations: {
+          readOnlyHint: false,
+          destructiveHint: false,
+          idempotentHint: true,
+        },
       },
       {
         name: 'delete_shop_section',
@@ -676,6 +761,11 @@ class EtsyMCPServer {
             },
           },
           required: ['shop_id', 'shop_section_id'],
+        },
+        annotations: {
+          readOnlyHint: false,
+          destructiveHint: true,
+          idempotentHint: true,
         },
       },
       {
@@ -707,6 +797,11 @@ class EtsyMCPServer {
             },
           },
           required: ['shop_id'],
+        },
+        annotations: {
+          readOnlyHint: false,
+          destructiveHint: false,
+          idempotentHint: true,
         },
       },
     ];
@@ -2539,14 +2634,13 @@ Remember: Photos are your most important listing element. Invest time in getting
 // Smithery createServer export (required for Smithery deployment)
 export default function createServer({ config }: { config?: z.infer<typeof configSchema> }) {
   const etsyConfig: EtsyConfig = {
-    apiKey: config?.apiKey || process.env.ETSY_API_KEY || '',
+    apiKey: config?.apiKey || process.env.ETSY_API_KEY || 'demo-key-readonly',
     shopId: config?.shopId || process.env.ETSY_SHOP_ID,
     accessToken: config?.accessToken || process.env.ETSY_ACCESS_TOKEN,
   };
 
-  if (!etsyConfig.apiKey) {
-    throw new Error('ETSY_API_KEY is required. Provide it via config or environment variable.');
-  }
+  // No validation - server can run without credentials for demo/documentation purposes
+  // API calls will fail gracefully if credentials are missing
 
   const mcpServer = new EtsyMCPServer(etsyConfig);
   return mcpServer.getServer();

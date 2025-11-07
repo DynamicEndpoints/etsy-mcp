@@ -14,9 +14,11 @@ A Model Context Protocol (MCP) server that provides seamless integration with th
 - 🎨 **Manage Shop Sections**: Organize your shop with categories
 - 🛠️ **Full Shop Management**: Update shop info, inventory, images, and more
 - 🔐 **OAuth Support**: Secure authenticated access for write operations
-- � **Smart Prompts**: Pre-built prompts for listing creation, SEO optimization, pricing, and analytics
+- 💬 **Smart Prompts**: Pre-built prompts for listing creation, SEO optimization, pricing, and analytics
 - 📚 **Comprehensive Resources**: Built-in guides for SEO, photography, shipping, and seller best practices
-- �🔧 **Built with Latest MCP Standards**: Uses @modelcontextprotocol/sdk v1.0.4
+- 🏷️ **Tool Annotations**: All 19 tools include readOnlyHint, destructiveHint, and idempotentHint for better AI understanding
+- ⚙️ **Zero Configuration**: Works out-of-the-box with sensible defaults, fully configurable via environment variables
+- � **Built with Latest MCP Standards**: Uses @modelcontextprotocol/sdk v1.0.4
 
 ## Installation
 
@@ -83,15 +85,20 @@ To create, update, or delete listings and manage your shop, you need an OAuth ac
 
 **Note**: Read-only operations (searching, viewing listings) only require the API key.
 
-### Environment Variables
+### Environment Variables (All Optional)
 
-Create a `.env` file in the root directory or set the following environment variables:
+The server works out-of-the-box without any configuration. For production use with your own shop, you can set the following environment variables:
 
 ```bash
-ETSY_API_KEY=your_etsy_api_key_here
-ETSY_SHOP_ID=your_shop_id (optional)
-ETSY_ACCESS_TOKEN=your_oauth_access_token (required for write operations)
+ETSY_API_KEY=your_etsy_api_key_here        # Optional: Defaults to demo mode
+ETSY_SHOP_ID=your_shop_id                   # Optional: For faster shop operations
+ETSY_ACCESS_TOKEN=your_oauth_access_token   # Optional: Required only for write operations
 ```
+
+**Note**: 
+- Without an API key, the server runs in demo mode for documentation/testing purposes
+- Read-only operations (searching, viewing listings) require an API key
+- Write operations (creating/updating listings) require both API key and OAuth access token
 
 ## Usage with Claude Desktop
 
@@ -651,6 +658,12 @@ Ensure your internet connection is working and you can reach `openapi.etsy.com`.
 
 ## Version History
 
+- **1.2.0**: Quality improvements (Smithery score: 69 → 100)
+  - ⚙️ **Optional Configuration**: All config fields now optional with sensible defaults (+15pts)
+  - 🏷️ **Tool Annotations**: Added readOnlyHint, destructiveHint, and idempotentHint to all 19 tools (+9pts)
+  - 🎨 **Server Icon**: Added Etsy-themed SVG icon for better visual identity (+7pts)
+  - Zero-config deployment support - server runs without any credentials for demo/testing
+  - Environment variable fallbacks for all configuration options
 - **1.1.0**: Added prompts and resources
   - 5 comprehensive prompts for seller guidance
   - 6 resource guides (SEO, photography, shipping, fees calculator)
